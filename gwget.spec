@@ -14,7 +14,7 @@ Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
 # Source0-size:	473147
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
-BuildRequires:	gtk+2-devel >= 2.4.0
+BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	perl-XML-Parser

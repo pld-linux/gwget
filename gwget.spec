@@ -5,19 +5,20 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.90
+Version:	0.91
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
-# Source0-md5:	44882057713aa64df9b94bbc6b678f29
-# Source0-size:	473147
+# Source0-md5:	d1ff8499fe00995e8bb02688f36b9ae0
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
+BuildRequires:	GConf2-devel
 BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	intltool >= 0.11
 BuildRequires:	libgnomeui-devel >= 2.0.0
-BuildRequires:	pkgconfig
 BuildRequires:	perl-XML-Parser
+BuildRequires:	pkgconfig
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,6 +50,7 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 
 %build
 %configure \
+	--disable-schemas-install \
 %if %{with epiphany}
 	--enable-epiphany-extension
 %else
@@ -61,7 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/epiphany-1.4/extensions}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 install pixmaps/%{name}.png $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
@@ -76,6 +79,9 @@ mv $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/lib* $RPM_BUILD_ROOT%{_libdir}/
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%gconf_schema_install
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
@@ -84,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/idl/*
 %{_desktopdir}/*
 %{_libdir}/bonobo/servers/*
+%{_sysconfdir}/gconf/schemas/*
 %{_pixmapsdir}/*
 
 %if %{with epiphany}

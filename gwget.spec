@@ -5,19 +5,19 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.93
+Version:	0.94
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
-# Source0-md5:	79a3625ef99a5a417164e0d97020fcc5
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.94/%{name}-%{version}.tar.bz2
+# Source0-md5:	15a9d6120c52c20aa44934bb75738385
 Patch0:		%{name}-desktop.patch
-URL:		http://gwget.sourceforge.net/
+URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.4.0}
-BuildRequires:	gtk+2-devel >= 2:2.4.0
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.6.0}
+BuildRequires:	gtk+2-devel >= 2:2.6.3
 BuildRequires:	intltool >= 0.11
-BuildRequires:	libgnomeui-devel >= 2.0.0
+BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 Requires:	wget
@@ -34,7 +34,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 1.4.0
+Requires:	epiphany >= 1.6.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -54,7 +54,7 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/epiphany-1.4/extensions}
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/epiphany-1.6/extensions}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -65,7 +65,7 @@ install %{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 %if %{with epiphany}
 rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/*.{a,la}
-mv $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/lib* $RPM_BUILD_ROOT%{_libdir}/epiphany-1.4/extensions
+mv $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/lib* $RPM_BUILD_ROOT%{_libdir}/epiphany-1.6/extensions
 %endif
 
 %find_lang %{name}
@@ -90,5 +90,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany-1.4/extensions/libgwgetextension.so*
+%attr(755,root,root)%{_libdir}/epiphany-1.6/extensions/libgwgetextension.so*
 %endif

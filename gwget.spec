@@ -5,15 +5,16 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.91
+Version:	0.92
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
-# Source0-md5:	d1ff8499fe00995e8bb02688f36b9ae0
+# Source0-md5:	7e59df048afb194baf2761cb877e8920
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
 BuildRequires:	GConf2-devel
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.4.0}
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	intltool >= 0.11
 BuildRequires:	libgnomeui-devel >= 2.0.0
@@ -32,9 +33,6 @@ Gwget to zarz±dca pobierania plików dla GNOME.
 Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
-%if %{with epiphany}
-BuildRequires:	epiphany-devel >= 1.4.0
-%endif
 Requires:	%{name} = %{version}-%{release}
 Requires:	epiphany >= 1.4.0
 
@@ -51,11 +49,7 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 %build
 %configure \
 	--disable-schemas-install \
-%if %{with epiphany}
-	--enable-epiphany-extension
-%else
-	--disable-epiphany-extension
-%endif
+	%{!?with_epiphany: --disable-epiphany-extension}
 %{__make}
 
 %install

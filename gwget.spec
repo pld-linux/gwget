@@ -5,12 +5,12 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.92
+Version:	0.93
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
-# Source0-md5:	7e59df048afb194baf2761cb877e8920
+# Source0-md5:	79a3625ef99a5a417164e0d97020fcc5
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
 BuildRequires:	GConf2-devel

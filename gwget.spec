@@ -1,16 +1,19 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.14.1
-Release:	2
+Version:	0.90
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
-# Source0-md5:	31040273567636bcbb4d660dbde12909
+# Source0-md5:	44882057713aa64df9b94bbc6b678f29
+# Source0-size:	473147
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
+BuildRequires:	gtk+2-devel >= 2.4.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
 BuildRequires:	pkgconfig
+BuildRequires:	perl-XML-Parser
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

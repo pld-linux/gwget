@@ -1,11 +1,11 @@
 Summary:	A download manager for GNOME
-Summary(pl):	Menad¿er pobierania plików dla GNOME
+Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.14.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/gwget/%{name}-%{version}.tar.gz
 # Source0-md5:	31040273567636bcbb4d660dbde12909
 Patch0:		%{name}-desktop.patch
 URL:		http://gwget.sourceforge.net/
@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Gwget is a download manager for GNOME.
 
 %description -l pl
-Gwget tomenad¿er do pobierania plików dla GNOME.
+Gwget to zarz±dca pobierania plików dla GNOME.
 
 %prep
 %setup -q
@@ -30,7 +30,6 @@ Gwget tomenad¿er do pobierania plików dla GNOME.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
 %{__make} install \
@@ -48,6 +47,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}/*
+%{_datadir}/%{name}
 %{_pixmapsdir}/*
 %{_desktopdir}/*

@@ -6,7 +6,7 @@ Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.94
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.94/%{name}-%{version}.tar.bz2
@@ -14,12 +14,14 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.94/%{name}-%{version}.ta
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.6.0}
-BuildRequires:	gtk+2-devel >= 2:2.6.3
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.6.1}
+BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	intltool >= 0.11
-BuildRequires:	libgnomeui-devel >= 2.10.0
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.197
+Requires(post,preun):	GConf2
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,7 +36,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 1.6.0
+Requires:	epiphany >= 1.6.1
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -74,7 +76,10 @@ mv $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/lib* $RPM_BUILD_ROOT%{_libdir}/
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install
+%gconf_schema_install gwget.schemas
+
+%preun
+%gconf_schema_uninstall gwget.schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

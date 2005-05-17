@@ -1,24 +1,23 @@
 #
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
-
+#
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.94
-Release:	2
+Version:	0.95
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.94/%{name}-%{version}.tar.bz2
-# Source0-md5:	15a9d6120c52c20aa44934bb75738385
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.95/%{name}-%{version}.tar.bz2
+# Source0-md5:	8c268fb6c8f724f0e1971c033ada9c47
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 %{?with_epiphany:BuildRequires:	epiphany-devel >= 1.6.1}
 BuildRequires:	gtk+2-devel >= 2:2.6.4
-BuildRequires:	intltool >= 0.11
+BuildRequires:	intltool >= 0.29
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
-BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
@@ -56,18 +55,13 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/epiphany-1.6/extensions}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-install pixmaps/%{name}.png $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
-
 %if %{with epiphany}
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/*.{a,la}
-mv $RPM_BUILD_ROOT%{_libdir}/epiphany/extensions/lib* $RPM_BUILD_ROOT%{_libdir}/epiphany-1.6/extensions
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany-*/extensions/*.{a,la}
 %endif
 
 %find_lang %{name}
@@ -95,5 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany-1.6/extensions/libgwgetextension.so*
+%attr(755,root,root)%{_libdir}/epiphany-*/extensions/libgwgetextension.so*
+%{_libdir}/epiphany-*/extensions/gwget.xml
 %endif

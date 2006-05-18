@@ -92,6 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/1.8/extensions/libgwgetextension.so*
-%{_libdir}/epiphany/1.8/extensions/gwget.xml
+%attr(755,root,root)%{_libdir}/epiphany/2.14/extensions/libgwgetextension.so*
+%{_libdir}/epiphany/2.14/extensions/gwget.xml
 %endif

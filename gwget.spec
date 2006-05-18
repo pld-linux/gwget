@@ -14,7 +14,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.96/%{name}-%{version}.ta
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.8.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.14.0}
 BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	intltool >= 0.34
 BuildRequires:	libgnomeui-devel >= 2.12.0
@@ -35,7 +35,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 1.8.0
+Requires:	epiphany >= 2.14.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -50,6 +50,7 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 %build
 %configure \
 	--disable-schemas-install \
+	%{?with_epiphany: --with-epiphany-version=2.14} \
 	%{!?with_epiphany: --disable-epiphany-extension}
 %{__make}
 
@@ -63,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT%{_includedir}/gwget
 
 %if %{with epiphany}
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/1.8/extensions/*.{a,la}
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.14/extensions/*.{a,la}
 %endif
 
 %find_lang %{name}
@@ -91,6 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/1.8/extensions/libgwgetextension.so*
-%{_libdir}/epiphany/1.8/extensions/gwget.xml
+%attr(755,root,root)%{_libdir}/epiphany/2.14/extensions/libgwgetextension.so*
+%{_libdir}/epiphany/2.14/extensions/gwget.xml
 %endif

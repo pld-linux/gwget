@@ -6,7 +6,7 @@ Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.98
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.98/%{name}-%{version}.tar.bz2
@@ -18,11 +18,12 @@ BuildRequires:	GConf2-devel
 %{?with_epiphany:BuildRequires:	epiphany-devel >= 2.14.0}
 BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	intltool >= 0.34
-BuildRequires:	libgnomeui-devel >= 2.12.0
+BuildRequires:	libgnomeui-devel >= 2.14.0
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
+Requires:	libgnomeui >= 2.14.0
 Requires:	wget >= 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

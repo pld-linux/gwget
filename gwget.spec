@@ -14,7 +14,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.96/%{name}-%{version}.ta
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 1.8.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.14.0}
 BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	intltool >= 0.34
 BuildRequires:	libgnomeui-devel >= 2.12.0
@@ -35,7 +35,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 1.8.0
+Requires:	epiphany >= 2.14.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -50,6 +50,7 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 %build
 %configure \
 	--disable-schemas-install \
+	%{?with_epiphany: --with-epiphany-version=2.14} \
 	%{!?with_epiphany: --disable-epiphany-extension}
 %{__make}
 

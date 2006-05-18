@@ -1,0 +1,11 @@
+--- gwget-0.98/src/eggtrayicon.c~	2006-04-10 21:49:18.000000000 +0200
++++ gwget-0.98/src/eggtrayicon.c	2006-05-18 12:11:38.043991435 +0200
+@@ -569,7 +569,7 @@
+ 
+   if (pixbuf)
+     {
+-#if (LIBNOTIFY_VERSION_MICRO < 2)
++#if (LIBNOTIFY_VERSION_MICRO < 2) && (LIBNOTIFY_VERSION_MINOR < 4)
+       notify_notification_set_icon_data_from_pixbuf (icon->notify->handle, pixbuf);
+ #else
+       notify_notification_set_icon_from_pixbuf (icon->notify->handle, pixbuf);

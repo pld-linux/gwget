@@ -5,17 +5,22 @@
 Summary:	A download manager for GNOME
 Summary(pl):	Zarz±dca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.98
-Release:	3
+Version:	0.98.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.98/%{name}-%{version}.tar.bz2
-# Source0-md5:	65741ee34c30a425f66efc2237f61e41
+# Source0-md5:	d09c1b589e2240cb7391d58eb2c8cc83
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-libnotify.patch
+Patch2:		%{name}-epiphany.patch
+Patch3:		%{name}-buildfix.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.14.0}
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	dbus-glib-devel >= 0.71
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.15.91}
 BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	intltool >= 0.34
 BuildRequires:	libgnomeui-devel >= 2.14.0
@@ -38,7 +43,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 2.14.0
+Requires:	epiphany >= 2.15.91
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -50,8 +55,13 @@ Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--disable-schemas-install \
 	%{?with_epiphany: --with-epiphany-version=2.14} \
@@ -68,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT%{_includedir}/gwget
 
 %if %{with epiphany}
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.14/extensions/*.{a,la}
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.15/extensions/*.{a,la}
 %endif
 
 %find_lang %{name}
@@ -96,6 +106,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/2.14/extensions/libgwgetextension.so*
-%{_libdir}/epiphany/2.14/extensions/gwget.xml
+%attr(755,root,root)%{_libdir}/epiphany/2.15/extensions/libgwgetextension.so*
+%{_libdir}/epiphany/2.15/extensions/gwget.xml
 %endif

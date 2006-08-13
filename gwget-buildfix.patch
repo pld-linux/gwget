@@ -1,0 +1,12 @@
+diff -urN aaa/gwget-0.98.1/src/main_window_cb.c gwget-0.98.1/src/main_window_cb.c
+--- aaa/gwget-0.98.1/src/main_window_cb.c	2006-05-04 21:06:00.000000000 +0200
++++ gwget-0.98.1/src/main_window_cb.c	2006-08-13 12:50:08.343672750 +0200
+@@ -24,7 +24,7 @@
+ #include <libgnome/gnome-init.h>
+ #include <libgnomevfs/gnome-vfs-utils.h>
+ #include <libgnomevfs/gnome-vfs-mime-utils.h>
+-#include <gnome-vfs-module-2.0/libgnomevfs/gnome-vfs-mime.h>
++#include <libgnomevfs/gnome-vfs-mime.h>
+ 
+ #include "main_window.h"
+ #include "main_window_cb.h"

@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/idl/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_libdir}/bonobo/servers/*
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/gwget.schemas

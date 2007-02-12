@@ -3,7 +3,7 @@
 %bcond_without	epiphany	# don't build epiphany extension
 #
 Summary:	A download manager for GNOME
-Summary(pl):	Zarz±dca pobierania plików dla GNOME
+Summary(pl.UTF-8):   ZarzÄ…dca pobierania plikÃ³w dla GNOME
 Name:		gwget
 Version:	0.98.2
 Release:	1
@@ -32,12 +32,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Gwget is a download manager for GNOME.
 
-%description -l pl
-Gwget to zarz±dca pobierania plików dla GNOME.
+%description -l pl.UTF-8
+Gwget to zarzÄ…dca pobierania plikÃ³w dla GNOME.
 
 %package -n epiphany-extension-gwget
 Summary:	Epiphany extension - gwget
-Summary(pl):	Rozszerzenie dla Epiphany - gwget
+Summary(pl.UTF-8):   Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
 Requires:	epiphany >= 2.16.0
@@ -45,8 +45,8 @@ Requires:	epiphany >= 2.16.0
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
 
-%description -n epiphany-extension-gwget -l pl
-Rozszerzenie dla Epiphany wykorzystuj±ce gwget do pobierania plików.
+%description -n epiphany-extension-gwget -l pl.UTF-8
+Rozszerzenie dla Epiphany wykorzystujÄ…ce gwget do pobierania plikÃ³w.
 
 %prep
 %setup -q

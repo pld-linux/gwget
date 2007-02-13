@@ -3,7 +3,7 @@
 %bcond_without	epiphany	# don't build epiphany extension
 #
 Summary:	A download manager for GNOME
-Summary(pl.UTF-8):   Zarządca pobierania plików dla GNOME
+Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.98.2
 Release:	1
@@ -37,7 +37,7 @@ Gwget to zarządca pobierania plików dla GNOME.
 
 %package -n epiphany-extension-gwget
 Summary:	Epiphany extension - gwget
-Summary(pl.UTF-8):   Rozszerzenie dla Epiphany - gwget
+Summary(pl.UTF-8):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
 Requires:	epiphany >= 2.16.0

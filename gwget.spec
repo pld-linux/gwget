@@ -6,26 +6,27 @@ Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.98.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.98/%{name}-%{version}.tar.bz2
 # Source0-md5:	26bb748aff0769321bf1fd9b65735649
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-epiphany-2.18.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dbus-glib-devel >= 0.71
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.16.0}
-BuildRequires:	gtk+2-devel >= 2:2.10.6
-BuildRequires:	intltool >= 0.34
-BuildRequires:	libgnomeui-devel >= 2.16.0
+BuildRequires:	dbus-glib-devel >= 0.73
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.18.0}
+BuildRequires:	gtk+2-devel >= 2:2.10.10
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libnotify-devel >= 0.4.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.16.0
+Requires:	libgnomeui >= 2.18.1
 Requires:	wget >= 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,7 +41,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl.UTF-8):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 2.16.0
+Requires:	epiphany >= 2.18.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -51,6 +52,7 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal}
@@ -58,7 +60,7 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 %{__automake}
 %configure \
 	--disable-schemas-install \
-	%{?with_epiphany: --with-epiphany-version=2.16} \
+	%{?with_epiphany: --with-epiphany-version=2.18} \
 	%{!?with_epiphany: --disable-epiphany-extension}
 %{__make}
 
@@ -72,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT%{_includedir}/gwget
 
 %if %{with epiphany}
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.16/extensions/*.{a,la}
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.18/extensions/*.{a,la}
 %endif
 
 %find_lang %{name}
@@ -98,6 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/2.16/extensions/libgwgetextension.so*
-%{_libdir}/epiphany/2.16/extensions/gwget.xml
+%attr(755,root,root)%{_libdir}/epiphany/2.18/extensions/libgwgetextension.so*
+%{_libdir}/epiphany/2.18/extensions/gwget.xml
 %endif

@@ -5,20 +5,19 @@
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
-Version:	0.98.2
-Release:	2
+Version:	0.99
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Networking
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.98/%{name}-%{version}.tar.bz2
-# Source0-md5:	26bb748aff0769321bf1fd9b65735649
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.99/%{name}-%{version}.tar.bz2
+# Source0-md5:	69f43ae6edbb7ac472c30c547fbf80e6
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-epiphany-2.18.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.18.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.18.2}
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libgnomeui-devel >= 2.18.1
@@ -41,7 +40,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl.UTF-8):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 2.18.0
+Requires:	epiphany >= 2.18.2
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -52,7 +51,6 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
@@ -93,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_datadir}/dbus-1/services/org.gnome.gwget.service
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*.png
 %{_sysconfdir}/gconf/schemas/gwget.schemas

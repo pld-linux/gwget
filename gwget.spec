@@ -12,12 +12,13 @@ Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.99/%{name}-%{version}.tar.bz2
 # Source0-md5:	69f43ae6edbb7ac472c30c547fbf80e6
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-epiphany-2.20.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.18.2}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.20.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libgnomeui-devel >= 2.18.1
@@ -40,7 +41,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl.UTF-8):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 2.18.2
+Requires:	epiphany >= 2.20.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.
@@ -51,14 +52,16 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+%{__intltoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
 	--disable-schemas-install \
-	%{?with_epiphany: --with-epiphany-version=2.18} \
+	%{?with_epiphany: --with-epiphany-version=2.20} \
 	%{!?with_epiphany: --disable-epiphany-extension}
 %{__make}
 
@@ -72,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT%{_includedir}/gwget
 
 %if %{with epiphany}
-rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.18/extensions/*.{a,la}
+rm -f $RPM_BUILD_ROOT%{_libdir}/epiphany/2.20/extensions/*.{a,la}
 %endif
 
 %find_lang %{name}
@@ -99,6 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/2.18/extensions/libgwgetextension.so*
-%{_libdir}/epiphany/2.18/extensions/gwget.xml
+%attr(755,root,root)%{_libdir}/epiphany/2.20/extensions/libgwgetextension.so*
+%{_libdir}/epiphany/2.20/extensions/gwget.xml
 %endif

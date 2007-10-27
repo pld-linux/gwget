@@ -6,7 +6,7 @@ Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.99
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.99/%{name}-%{version}.tar.bz2

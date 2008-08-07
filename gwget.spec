@@ -8,7 +8,7 @@ Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.99
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.99/%{name}-%{version}.tar.bz2
@@ -60,6 +60,7 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 
 %build
 %{__intltoolize}
+%{__libtoolize} --install
 %{__aclocal}
 %{__autoconf}
 %{__automake}

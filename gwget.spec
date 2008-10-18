@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
 #
-%define	epiphany_version	2.22
+%define	epiphany_version	2.24
 #
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	0.99
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/0.99/%{name}-%{version}.tar.bz2
@@ -21,7 +21,7 @@ BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.22.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.24.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libgnomeui-devel >= 2.18.1
@@ -44,7 +44,7 @@ Summary:	Epiphany extension - gwget
 Summary(pl.UTF-8):	Rozszerzenie dla Epiphany - gwget
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{version}-%{release}
-Requires:	epiphany >= 2.20.0
+Requires:	epiphany >= 2.24.0
 
 %description -n epiphany-extension-gwget
 Epiphany extension that uses gwget to download files.

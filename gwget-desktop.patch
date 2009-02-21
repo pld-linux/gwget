@@ -1,23 +1,14 @@
-diff -urN gwget-0.14.orig/gwget.desktop.in gwget-0.14/gwget.desktop.in
---- gwget-0.14.orig/gwget.desktop.in	2004-09-02 16:20:16.599336432 +0200
-+++ gwget-0.14/gwget.desktop.in	2004-09-02 16:24:53.948173000 +0200
-@@ -1,15 +1,18 @@
+--- data/gwget.desktop.in.in.orig	2009-02-21 17:20:59.250100730 +0100
++++ data/gwget.desktop.in.in	2009-02-21 17:23:29.890083149 +0100
+@@ -2,8 +2,11 @@
+ Version=1.0
  Encoding=UTF-8
- Name=Gwget Download Manager
- GenericName=Download Manager
-+GenericName[pl]=Menadżer pobierania
- Comment=Download files from the Internet
-+Comment[pl]=Pobieraj pliki z Internetu
+ _Name=Gwget Download Manager
++_Name[pl]=Menadżer pobierania Gwget
+ _GenericName=Download Manager
++_GenericName=Menadżer pobierania
+ _Comment=Download files from the Internet
++_Comment=Pobiera pliki z internetu
  Exec=gwget
  StartupNotify=true
  Icon=gwget.png
- Terminal=false
- X-MultipleArgs=false
- Type=Application
--Categories=Application;Network;
-+Categories=GTK;GNOME;Network;FileTransfer;
- X-GNOME-Bugzilla-Bugzilla=GNOME
- X-GNOME-Bugzilla-Product=gwget
- X-GNOME-Bugzilla-Component=General
- X-GNOME-Bugzilla-Version=@VERSION@
-+# vi: encoding=utf-8

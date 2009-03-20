@@ -2,24 +2,25 @@
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
 #
-%define	epiphany_version	2.24
+%define	epiphany_version	2.26
 #
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	1.0.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gwget/1.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	780d2d8569032cbc4405b88c33e431cc
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-epiphany.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.24.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.26.0}
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libgnomeui-devel >= 2.18.1
@@ -52,7 +53,8 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
@@ -103,6 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with epiphany}
 %files -n epiphany-extension-gwget
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_libdir}/epiphany/%{epiphany_version}/extensions/libgwgetextension.so*
+%attr(755,root,root) %{_libdir}/epiphany/%{epiphany_version}/extensions/libgwgetextension.so*
 %{_libdir}/epiphany/%{epiphany_version}/extensions/gwget.xml
 %endif

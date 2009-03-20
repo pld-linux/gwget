@@ -1,0 +1,12 @@
+diff -urN gwget-1.0.1/configure.ac gwget-1.0.1.new/configure.ac
+--- gwget-1.0.1/configure.ac	2009-02-17 19:15:04.000000000 +0100
++++ gwget-1.0.1.new/configure.ac	2009-03-20 15:17:04.000000000 +0100
+@@ -215,7 +215,7 @@
+ 	  EPIPHANY_PKGCONFIG=epiphany-2.25
+           EPIPHANY_REQUIRED=2.25
+ 	  EPIPHANY_SHORTVER=225
+-elif test "x$EPHY_VER" = "x2.18"; then
++elif test "x$EPHY_VER" = "x2.26"; then
+ 	  EPIPHANY_PKGCONFIG=epiphany-2.26
+           EPIPHANY_REQUIRED=2.26
+ 	  EPIPHANY_SHORTVER=226

@@ -19,10 +19,12 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
 %{?with_epiphany:BuildRequires:	epiphany-devel >= 2.26.0}
+BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libnotify-devel >= 0.4.0
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2

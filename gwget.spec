@@ -2,23 +2,24 @@
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
 #
-%define	epiphany_version	2.28
+%define	epiphany_version	2.30
 #
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	1.0.4
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gwget/1.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	b65ebc752cad068e747ae6ef45fafdcc
+Patch0:		epiphany-230.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.26.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.30.0}
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5
@@ -53,6 +54,7 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}

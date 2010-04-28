@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
 #
-%define	epiphany_version	2.30
+%define	epiphany_version	2.29
 #
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME
 Name:		gwget
 Version:	1.0.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Networking
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gwget/1.0/%{name}-%{version}.tar.bz2

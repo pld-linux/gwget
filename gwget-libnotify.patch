@@ -1,0 +1,15 @@
+--- gwget-1.0.4/src/systray.c~	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/systray.c	2011-04-07 15:47:18.496473352 +0200
+@@ -224,7 +224,11 @@
+        		if (!notify_is_initted ())
+ 			if (!notify_init ("gwget"))
+ 		               return;
+-       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name,NULL);
++       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
++		       ,NULL
++#endif
++		       );
+        notify_notification_show(notification,NULL);
+ #endif
+ 

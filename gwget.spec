@@ -19,7 +19,7 @@ BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.73
-%{?with_epiphany:BuildRequires:	epiphany-devel >= 2.30.0}
+%{?with_epiphany:BuildRequires:	epiphany-devel >= 3.0.0}
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	intltool >= 0.35.5

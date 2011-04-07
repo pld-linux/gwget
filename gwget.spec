@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without	epiphany	# don't build epiphany extension
 #
-%define	epiphany_version	2.29
+%define	epiphany_version	3.0
 #
 Summary:	A download manager for GNOME
 Summary(pl.UTF-8):	Zarządca pobierania plików dla GNOME

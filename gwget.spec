@@ -15,6 +15,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gwget/1.0/%{name}-%{version}.tar
 # Source0-md5:	b65ebc752cad068e747ae6ef45fafdcc
 Patch0:		epiphany-230.patch
 Patch1:		%{name}-libnotify.patch
+Patch2:		epiphany-30.patch
 URL:		http://www.gnome.org/projects/gwget/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -57,6 +58,7 @@ Rozszerzenie dla Epiphany wykorzystujące gwget do pobierania plików.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__intltoolize}

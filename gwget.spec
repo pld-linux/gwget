@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	epiphany	# don't build epiphany extension
+%bcond_with	epiphany	# don't build epiphany extension
 #
 %define	epiphany_version	3.0
 #
